@@ -84,10 +84,6 @@ UserSchema.statics.findByCredentials = function (email,password) {
     // bcrypt only uses callbacks but we want to return promise
     return new Promise((resolve, reject) => {
       bcrypt.compare(password,user.password, (err,res) => {
-        if(err) {
-          return reject();
-        }
-
         if(res) {
           resolve(user);
         } else {
